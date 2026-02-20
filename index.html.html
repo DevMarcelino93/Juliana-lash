@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Juliana Silva – Lash Designer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --rose:#C8707E; --rose-light:#e8a8b2; --rose-dark:#a05060;
+  --gold:#C9A96E; --gold-light:#e8d5b0;
+  --cream:#FAF6F0; --dark:#1C1015; --muted:#7a6670; --bg:#FDF9F5;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{font-family:'Jost',sans-serif;background:var(--bg);color:var(--dark);overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:16px 48px;background:rgba(253,249,245,0.92);backdrop-filter:blur(14px);border-bottom:1px solid rgba(201,169,110,0.2);}
+.nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;letter-spacing:2px;}
+.nav-logo span{color:var(--rose);font-style:italic;}
+.nav-links{display:flex;gap:28px;list-style:none;align-items:center;}
+.nav-links a{font-size:0.75rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);text-decoration:none;transition:color .3s;}
+.nav-links a:hover{color:var(--rose);}
+.nav-cta{background:var(--rose) !important;color:#fff !important;padding:10px 22px;border-radius:2px;}
+.nav-cta:hover{background:var(--rose-dark) !important;}
+.hamburger{display:none;background:none;border:none;font-size:1.4rem;cursor:pointer;color:var(--dark);}
+
+/* HERO */
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;position:relative;overflow:hidden;padding-top:80px;}
+.hero-left{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 80px;position:relative;z-index:2;}
+.eyebrow{font-size:0.7rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:22px;display:flex;align-items:center;gap:12px;}
+.eyebrow::before{content:'';width:36px;height:1px;background:var(--gold);}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,5vw,5.5rem);font-weight:300;line-height:1.1;margin-bottom:24px;}
+.hero-title em{color:var(--rose);font-style:italic;}
+.hero-sub{font-size:1rem;color:var(--muted);line-height:1.8;max-width:440px;margin-bottom:44px;font-weight:300;}
+.hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+.btn-primary{background:var(--rose);color:#fff;border:none;cursor:pointer;padding:16px 36px;font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s;border-radius:2px;}
+.btn-primary:hover{background:var(--rose-dark);transform:translateY(-2px);box-shadow:0 12px 30px rgba(200,112,126,0.35);}
+.btn-outline{background:transparent;color:var(--dark);border:1px solid var(--gold);padding:16px 36px;font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:all .3s;border-radius:2px;cursor:pointer;}
+.btn-outline:hover{background:var(--gold);color:#fff;}
+.hero-badges{margin-top:52px;display:flex;gap:36px;}
+.badge-num{font-family:'Cormorant Garamond',serif;font-size:2.4rem;color:var(--rose);font-weight:300;}
+.badge-label{font-size:0.68rem;letter-spacing:2px;color:var(--muted);text-transform:uppercase;margin-top:2px;}
+.hero-right{position:relative;overflow:hidden;}
+.hero-img-wrap{width:100%;height:100%;background:linear-gradient(135deg,#e8c4cc 0%,#f5dce0 40%,#f0e8d5 100%);display:flex;align-items:center;justify-content:center;position:relative;}
+.hero-deco-circle{position:absolute;border-radius:50%;border:1px solid rgba(201,169,110,0.3);}
+.hero-tag{position:absolute;bottom:40px;right:-20px;background:#fff;padding:18px 24px;box-shadow:0 20px 60px rgba(0,0,0,0.1);border-radius:4px;border-left:3px solid var(--rose);}
+.hero-tag p{font-size:0.72rem;color:var(--muted);letter-spacing:1px;}
+.hero-tag strong{font-size:1rem;color:var(--dark);display:block;margin-top:3px;}
+.scroll-indicator{position:absolute;bottom:36px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:5;}
+.scroll-indicator span{font-size:0.62rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);}
+.scroll-line{width:1px;height:46px;background:linear-gradient(to bottom,var(--rose),transparent);animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:0.3;transform:scaleY(0.7)}50%{opacity:1;transform:scaleY(1)}}
+
+/* PROCESS */
+.process{background:#fff;padding:60px 80px;text-align:center;}
+.process-steps{display:flex;justify-content:center;align-items:flex-start;gap:0;margin-top:48px;flex-wrap:wrap;}
+.process-step{display:flex;flex-direction:column;align-items:center;width:200px;position:relative;}
+.process-step:not(:last-child)::after{content:'—————';position:absolute;top:28px;left:calc(100% - 20px);color:var(--rose-light);font-size:0.8rem;letter-spacing:-2px;white-space:nowrap;}
+.step-num{width:56px;height:56px;border-radius:50%;background:linear-gradient(135deg,var(--rose-light),var(--rose));color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.4rem;margin-bottom:16px;}
+.process-step h4{font-size:0.85rem;letter-spacing:1px;margin-bottom:8px;}
+.process-step p{font-size:0.78rem;color:var(--muted);line-height:1.6;max-width:140px;}
+
+/* SECTIONS */
+.sec-padded{padding:100px 80px;}
+.sec-eyebrow{font-size:0.7rem;letter-spacing:5px;text-transform:uppercase;color:var(--gold);margin-bottom:16px;display:flex;align-items:center;gap:12px;}
+.sec-eyebrow::before{content:'';width:28px;height:1px;background:var(--gold);}
+.sec-eyebrow.center{justify-content:center;}
+.sec-eyebrow.center::before{display:none;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.5rem);font-weight:300;line-height:1.2;margin-bottom:18px;}
+.sec-title em{color:var(--rose);font-style:italic;}
+
+/* ABOUT */
+.about{background:var(--cream);display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.about-img{position:relative;}
+.about-img-card{width:100%;padding-top:115%;background:linear-gradient(135deg,#f5d5da 0%,#e8a8b2 50%,#d4707e 100%);border-radius:4px;position:relative;overflow:hidden;}
+.cert-badge{position:absolute;bottom:-16px;right:-16px;width:118px;height:118px;background:var(--gold);border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;text-align:center;box-shadow:0 10px 30px rgba(201,169,110,0.4);}
+.cert-badge span{font-size:0.58rem;letter-spacing:2px;text-transform:uppercase;line-height:1.4;}
+.cert-badge strong{font-size:1.3rem;font-family:'Cormorant Garamond',serif;}
+.about-text p{font-size:0.98rem;color:var(--muted);line-height:1.9;margin-bottom:18px;font-weight:300;}
+.about-features{margin-top:32px;display:grid;grid-template-columns:1fr 1fr;gap:18px;}
+.feature-item{display:flex;align-items:flex-start;gap:12px;}
+.feature-icon{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--rose-light),var(--rose));display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem;}
+.feature-text strong{font-size:0.82rem;letter-spacing:1px;color:var(--dark);}
+.feature-text p{font-size:0.76rem;color:var(--muted);margin-top:2px;line-height:1.5;}
+
+/* PORTFOLIO */
+.portfolio-section{background:var(--bg);padding:100px 80px;}
+.portfolio-header{text-align:center;max-width:600px;margin:0 auto 56px;}
+.portfolio-filters{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:44px;}
+.filter-btn{padding:9px 22px;border:1px solid #e0d8d0;border-radius:20px;background:transparent;font-family:'Jost',sans-serif;font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .25s;color:var(--muted);}
+.filter-btn:hover,.filter-btn.active{background:var(--rose);border-color:var(--rose);color:#fff;}
+.portfolio-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;}
+.portfolio-card{position:relative;overflow:hidden;border-radius:4px;cursor:pointer;aspect-ratio:3/4;box-shadow:0 4px 20px rgba(0,0,0,0.08);transition:transform .3s,box-shadow .3s;}
+.portfolio-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.15);}
+.portfolio-card:hover .portfolio-overlay{opacity:1;}
+.portfolio-card:hover .card-zoom-icon{transform:scale(1) translate(-50%,-50%);opacity:1;}
+.portfolio-img{width:100%;height:100%;transition:transform .4s;}
+.portfolio-card:hover .portfolio-img{transform:scale(1.07);}
+.portfolio-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(28,16,21,0.85) 0%,rgba(28,16,21,0.15) 60%,transparent 100%);opacity:0;transition:opacity .35s;display:flex;flex-direction:column;justify-content:flex-end;padding:24px;}
+.portfolio-overlay h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;color:#fff;font-weight:400;}
+.portfolio-overlay span{font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--rose-light);margin-top:4px;display:block;}
+.card-zoom-icon{position:absolute;top:50%;left:50%;transform:scale(0.7) translate(-50%,-50%);transform-origin:top left;width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;font-size:1.3rem;opacity:0;transition:all .35s;color:#fff;}
+.card-tag{position:absolute;top:14px;left:14px;background:rgba(255,255,255,0.92);font-size:0.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--rose);padding:5px 12px;border-radius:20px;}
+
+/* PORTFOLIO MODAL */
+.portfolio-modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(15,8,12,0.92);backdrop-filter:blur(12px);align-items:center;justify-content:center;padding:20px;overflow-y:auto;}
+.portfolio-modal-overlay.active{display:flex;}
+.portfolio-modal{background:#fff;border-radius:6px;max-width:920px;width:100%;overflow:hidden;position:relative;animation:modalSlideIn .4s cubic-bezier(.34,1.4,.64,1);display:grid;grid-template-columns:1.1fr 1fr;max-height:92vh;}
+@keyframes modalSlideIn{from{transform:scale(0.88) translateY(20px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.modal-img-side{position:relative;min-height:500px;}
+.modal-img-fill{width:100%;height:100%;}
+.modal-img-counter{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:6px;}
+.modal-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,0.4);cursor:pointer;transition:all .2s;}
+.modal-dot.active{background:#fff;width:22px;border-radius:4px;}
+.modal-nav-btn{position:absolute;top:50%;transform:translateY(-50%);width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.15);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:1.2rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.modal-nav-btn:hover{background:rgba(255,255,255,0.3);}
+.modal-nav-prev{left:12px;}
+.modal-nav-next{right:12px;}
+.modal-info-side{padding:44px 38px;overflow-y:auto;display:flex;flex-direction:column;justify-content:space-between;}
+.modal-close-btn{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;background:rgba(28,16,21,0.08);border:none;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;color:var(--dark);transition:all .2s;z-index:10;}
+.modal-close-btn:hover{background:var(--rose);color:#fff;}
+.modal-tag{display:inline-block;background:var(--rose);color:#fff;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:20px;margin-bottom:14px;}
+.modal-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:6px;}
+.modal-subtitle{font-size:0.78rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;}
+.modal-desc{font-size:0.9rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:24px;}
+.modal-details{background:var(--cream);border-radius:4px;padding:18px;margin-bottom:22px;}
+.modal-detail-row{display:flex;justify-content:space-between;align-items:center;padding:7px 0;border-bottom:1px solid rgba(201,169,110,0.2);}
+.modal-detail-row:last-child{border-bottom:none;}
+.modal-detail-row span:first-child{font-size:0.7rem;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+.modal-detail-row span:last-child{font-size:0.88rem;color:var(--dark);font-weight:500;}
+.modal-price{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--rose);font-weight:300;margin-bottom:16px;}
+.modal-cta{width:100%;background:var(--rose);color:#fff;border:none;cursor:pointer;padding:15px;font-family:'Jost',sans-serif;font-size:0.78rem;letter-spacing:3px;text-transform:uppercase;border-radius:2px;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:8px;}
+.modal-cta:hover{background:var(--rose-dark);transform:translateY(-2px);}
+.modal-gallery-thumbs{display:flex;gap:8px;margin-top:14px;}
+.modal-thumb{width:54px;height:54px;border-radius:2px;overflow:hidden;cursor:pointer;opacity:0.5;transition:opacity .2s;border:2px solid transparent;}
+.modal-thumb.active{opacity:1;border-color:var(--rose);}
+
+/* TESTIMONIALS */
+.testimonials{background:linear-gradient(135deg,#1C1015 0%,#2a1520 100%);color:#fff;text-align:center;padding:100px 80px;}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:56px;}
+.testi-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);padding:32px 26px;border-radius:4px;text-align:left;position:relative;}
+.testi-card::before{content:'"';font-family:'Cormorant Garamond',serif;font-size:8rem;color:var(--rose);opacity:0.15;position:absolute;top:-20px;left:18px;line-height:1;}
+.stars{color:var(--gold);font-size:0.9rem;margin-bottom:14px;}
+.testi-text{font-size:0.87rem;color:rgba(255,255,255,0.72);line-height:1.8;margin-bottom:22px;font-weight:300;}
+.testi-author{display:flex;align-items:center;gap:12px;}
+.testi-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--rose),var(--gold));display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:1.1rem;color:#fff;}
+.testi-name{font-size:0.83rem;color:#fff;font-weight:500;}
+.testi-loc{font-size:0.72rem;color:rgba(255,255,255,0.38);margin-top:1px;}
+
+/* BOOKING */
+.booking{background:var(--cream);display:grid;grid-template-columns:1fr 1.4fr;gap:80px;align-items:start;padding:100px 80px;}
+.booking-info p{font-size:0.93rem;color:var(--muted);line-height:1.8;font-weight:300;margin-bottom:26px;}
+.contact-items{display:flex;flex-direction:column;gap:18px;margin-bottom:26px;}
+.contact-item{display:flex;align-items:flex-start;gap:14px;}
+.contact-ico{width:44px;height:44px;border-radius:50%;background:var(--rose);color:#fff;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
+.contact-detail strong{font-size:0.78rem;letter-spacing:1px;text-transform:uppercase;color:var(--dark);}
+.contact-detail p{font-size:0.87rem;color:var(--muted);margin-top:2px;line-height:1.5;}
+.booking-form-wrap{background:#fff;padding:46px;border-radius:4px;box-shadow:0 20px 80px rgba(0,0,0,0.08);}
+.form-title{font-family:'Cormorant Garamond',serif;font-size:1.8rem;margin-bottom:6px;}
+.form-sub{font-size:0.82rem;color:var(--muted);margin-bottom:26px;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-group{margin-bottom:17px;}
+.form-group label{display:block;font-size:0.7rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:7px;}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:13px 14px;border:1px solid #e8e0d8;border-radius:2px;background:var(--bg);font-family:'Jost',sans-serif;font-size:0.87rem;color:var(--dark);transition:border .25s;outline:none;}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--rose);}
+.form-group textarea{resize:vertical;min-height:74px;}
+.time-slots{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-top:7px;}
+.time-slot{padding:10px 4px;border:1px solid #e8e0d8;border-radius:2px;text-align:center;font-size:0.76rem;cursor:pointer;transition:all .2s;background:var(--bg);}
+.time-slot:hover:not(.unavailable),.time-slot.active{background:var(--rose);color:#fff;border-color:var(--rose);}
+.time-slot.unavailable{opacity:0.35;cursor:not-allowed;text-decoration:line-through;}
+.form-submit{width:100%;background:var(--rose);color:#fff;border:none;cursor:pointer;padding:16px;font-family:'Jost',sans-serif;font-size:0.8rem;letter-spacing:3px;text-transform:uppercase;border-radius:2px;margin-top:6px;transition:all .3s;display:flex;align-items:center;justify-content:center;gap:10px;}
+.form-submit:hover{background:var(--rose-dark);transform:translateY(-2px);}
+.form-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.whatsapp-note{margin-top:12px;display:flex;align-items:center;gap:10px;font-size:0.75rem;color:var(--muted);background:#f0faf0;padding:11px 14px;border-radius:2px;}
+
+/* ADMIN */
+.admin-toggle{margin-bottom:16px;display:flex;align-items:center;gap:14px;}
+.admin-label{font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);}
+.toggle-switch{position:relative;width:44px;height:24px;}
+.toggle-switch input{opacity:0;width:0;height:0;}
+.toggle-slider{position:absolute;inset:0;background:#e0d8d0;border-radius:12px;cursor:pointer;transition:.3s;}
+.toggle-slider:before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.3s;}
+.toggle-switch input:checked + .toggle-slider{background:var(--rose);}
+.toggle-switch input:checked + .toggle-slider:before{transform:translateX(20px);}
+.agenda-panel{background:#fff;padding:80px 80px;}
+.agenda-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:32px;}
+.stat-card{background:var(--cream);border-radius:4px;padding:20px;text-align:center;}
+.stat-num{font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:var(--rose);}
+.stat-label{font-size:0.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-top:4px;}
+.agenda-table-wrap{overflow-x:auto;}
+.agenda-table{width:100%;border-collapse:collapse;font-size:0.85rem;}
+.agenda-table th{text-align:left;font-size:0.66rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);padding:12px 14px;border-bottom:2px solid var(--cream);}
+.agenda-table td{padding:13px 14px;border-bottom:1px solid var(--cream);vertical-align:middle;}
+.agenda-table tr:hover td{background:var(--bg);}
+.status-badge{display:inline-block;padding:4px 11px;border-radius:20px;font-size:0.66rem;letter-spacing:1px;text-transform:uppercase;}
+.status-pending{background:#fff8e6;color:#b8880a;}
+.status-confirmed{background:#e8f7ee;color:#1a7a40;}
+.status-cancelled{background:#fde8ea;color:#c0303a;}
+.agenda-empty{text-align:center;padding:48px;color:var(--muted);}
+.empty-icon{font-size:3rem;margin-bottom:12px;opacity:0.4;}
+.agenda-actions{display:flex;gap:7px;}
+.btn-sm{padding:6px 13px;border-radius:2px;font-size:0.68rem;letter-spacing:1px;text-transform:uppercase;cursor:pointer;border:none;font-family:'Jost',sans-serif;transition:all .2s;}
+.btn-confirm{background:#e8f7ee;color:#1a7a40;}
+.btn-confirm:hover{background:#1a7a40;color:#fff;}
+.btn-cancel{background:#fde8ea;color:#c0303a;}
+.btn-cancel:hover{background:#c0303a;color:#fff;}
+
+/* FOOTER */
+footer{background:var(--dark);padding:60px 80px 36px;color:rgba(255,255,255,0.6);}
+.footer-top{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:56px;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,0.07);margin-bottom:28px;}
+.footer-brand .logo{font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:#fff;margin-bottom:14px;}
+.footer-brand .logo span{color:var(--rose-light);font-style:italic;}
+.footer-brand p{font-size:0.82rem;line-height:1.8;max-width:270px;}
+.footer-col h4{font-size:0.67rem;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px;}
+.footer-col ul{list-style:none;}
+.footer-col ul li{margin-bottom:9px;}
+.footer-col ul li a{font-size:0.82rem;color:rgba(255,255,255,0.45);text-decoration:none;transition:color .3s;cursor:pointer;}
+.footer-col ul li a:hover{color:var(--rose-light);}
+.footer-col p{font-size:0.82rem;line-height:1.8;}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;font-size:0.75rem;}
+.social-links{display:flex;gap:12px;}
+.social-link{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);display:flex;align-items:center;justify-content:center;text-decoration:none;color:rgba(255,255,255,0.45);font-size:0.87rem;transition:all .3s;}
+.social-link:hover{background:var(--rose);border-color:var(--rose);color:#fff;}
+
+/* MODAL SUCCESS */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:2000;background:rgba(28,16,21,0.75);align-items:center;justify-content:center;backdrop-filter:blur(8px);}
+.modal-overlay.active{display:flex;}
+.modal-box{background:#fff;padding:54px 42px;border-radius:4px;max-width:420px;width:90%;text-align:center;animation:popIn .4s cubic-bezier(.34,1.56,.64,1);}
+@keyframes popIn{from{transform:scale(0.85);opacity:0}to{transform:scale(1);opacity:1}}
+.modal-icon-big{font-size:4rem;margin-bottom:18px;}
+.modal-box-title{font-family:'Cormorant Garamond',serif;font-size:2rem;margin-bottom:10px;}
+.modal-box-text{font-size:0.87rem;color:var(--muted);line-height:1.7;margin-bottom:26px;}
+.modal-close-main{background:var(--rose);color:#fff;border:none;padding:13px 34px;cursor:pointer;font-family:'Jost',sans-serif;font-size:0.77rem;letter-spacing:2px;border-radius:2px;}
+
+/* ANIMATIONS */
+.fade-up{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease;}
+.fade-up.visible{opacity:1;transform:translateY(0);}
+
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--dark);color:#fff;padding:13px 22px;border-radius:4px;font-size:0.82rem;z-index:3000;transition:transform .4s cubic-bezier(.34,1.4,.64,1);box-shadow:0 8px 30px rgba(0,0,0,0.2);display:flex;align-items:center;gap:10px;white-space:nowrap;}
+.toast.show{transform:translateX(-50%) translateY(0);}
+.toast.success{border-left:3px solid #25D366;}
+.toast.error{border-left:3px solid var(--rose);}
+
+/* SPINNER */
+.spinner{width:18px;height:18px;border:2px solid rgba(255,255,255,0.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* PULSE ANIMATIONS */
+@keyframes pulseCTA{0%,100%{box-shadow:0 0 0 0 rgba(200,112,126,0.5)}70%{box-shadow:0 0 0 14px rgba(200,112,126,0)}}
+.form-submit:not(:disabled){animation:pulseCTA 2.8s ease-in-out infinite;}
+.form-submit:hover{animation:none !important;}
+@keyframes pulseHero{0%,100%{box-shadow:0 0 0 0 rgba(200,112,126,0.45)}70%{box-shadow:0 0 0 16px rgba(200,112,126,0)}}
+.hero-pulse{animation:pulseHero 2.4s ease-in-out infinite;}
+.hero-pulse:hover{animation:none !important;}
+.field-hint{font-size:.72rem;color:#c0303a;margin-top:4px;}
+.form-group input.valid,.form-group select.valid{border-color:#25a855;background:#f2fbf5;}
+.form-group input.error,.form-group select.error{border-color:#c0303a;background:#fff5f5;}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+  nav{padding:14px 24px;}
+  .process,.testimonials{padding:70px 32px;}
+  .portfolio-section,.booking,.agenda-panel,.about{padding:70px 32px;}
+  .hero{grid-template-columns:1fr;min-height:auto;}
+  .hero-left{padding:56px 32px 40px;}
+  .hero-right{height:280px;}
+  .about{grid-template-columns:1fr;gap:36px;}
+  .portfolio-grid{grid-template-columns:repeat(2,1fr);}
+  .testi-grid{grid-template-columns:1fr 1fr;}
+  .booking{grid-template-columns:1fr;gap:36px;}
+  .footer-top{grid-template-columns:1fr 1fr;gap:36px;}
+  footer{padding:46px 32px 26px;}
+  .portfolio-modal{grid-template-columns:1fr;max-height:95vh;}
+  .modal-img-side{min-height:280px;max-height:300px;}
+  .agenda-stats{grid-template-columns:repeat(2,1fr);}
+  .nav-links{display:none;}
+  .hamburger{display:block;}
+}
+@media(max-width:600px){
+  .portfolio-grid{grid-template-columns:1fr 1fr;gap:10px;}
+  .testi-grid{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .time-slots{grid-template-columns:repeat(3,1fr);}
+  .footer-top{grid-template-columns:1fr;}
+  .footer-bottom{flex-direction:column;gap:14px;}
+  .booking-form-wrap{padding:24px 16px;}
+  .hero-badges{gap:18px;}
+  .process-steps{gap:24px;}
+  .process-step:not(:last-child)::after{display:none;}
+  .agenda-stats{grid-template-columns:1fr 1fr;}
+  .modal-gallery-thumbs{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Juliana <span>Silva</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="javascript:void(0)" onclick="scrollTo('sobre');closeMenu()">Sobre</a></li>
+    <li><a href="javascript:void(0)" onclick="scrollTo('portfolio');closeMenu()">Portfólio</a></li>
+    <li><a href="javascript:void(0)" onclick="scrollTo('depoimentos');closeMenu()">Depoimentos</a></li>
+    <li><a href="javascript:void(0)" onclick="scrollTo('agendamento');closeMenu()">Agendamentos</a></li>
+    <li><a href="javascript:void(0)" class="nav-cta" onclick="scrollTo('agendamento');closeMenu()">✨ Agendar</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Lash Designer Certificada</div>
+    <h1 class="hero-title">O olhar que<br><em>transforma</em><br>você</h1>
+    <p class="hero-sub">Extensões de cílios que valorizam a sua beleza natural com técnica refinada, materiais premium e um toque de arte em cada fio.</p>
+    <div class="hero-btns">
+      <button onclick="document.getElementById('agendamento').scrollIntoView({behavior:'smooth'})" class="btn-primary hero-pulse">✨ Agendar Agora</button>
+      <button class="btn-outline" onclick="scrollTo('portfolio')">👁 Ver Portfólio</button>
+    </div>
+    <div class="hero-badges">
+      <div class="badge"><div class="badge-num" id="clientCount">200+</div><div class="badge-label">Clientes Satisfeitas</div></div>
+      <div class="badge"><div class="badge-num">100%</div><div class="badge-label">Materiais Premium</div></div>
+      <div class="badge"><div class="badge-num">★5</div><div class="badge-label">Avaliação Média</div></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-img-wrap">
+      <div class="hero-deco-circle" style="width:400px;height:400px;top:-100px;right:-100px;"></div>
+      <div class="hero-deco-circle" style="width:200px;height:200px;bottom:50px;left:-50px;"></div>
+      <div style="position:relative;z-index:2;">
+        <svg width="320" height="360" viewBox="0 0 320 360" fill="none">
+          <ellipse cx="160" cy="280" rx="130" ry="80" fill="#e8909e" opacity="0.2"/>
+          <ellipse cx="160" cy="180" rx="120" ry="55" fill="#fff" opacity="0.95"/>
+          <ellipse cx="160" cy="185" rx="42" ry="42" fill="#4a2030"/>
+          <ellipse cx="160" cy="185" rx="28" ry="28" fill="#1a0810"/>
+          <ellipse cx="145" cy="172" rx="8" ry="8" fill="#fff" opacity="0.9"/>
+          <ellipse cx="168" cy="178" rx="4" ry="4" fill="#fff" opacity="0.6"/>
+          <ellipse cx="160" cy="185" rx="42" ry="42" fill="none" stroke="#6a3050" stroke-width="1.5" opacity="0.4"/>
+          <path d="M55 175 C50 155,48 140,52 125" stroke="#1a0810" stroke-width="3" stroke-linecap="round"/>
+          <path d="M75 162 C72 140,72 123,78 108" stroke="#1a0810" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M100 152 C100 130,102 112,110 96" stroke="#1a0810" stroke-width="4" stroke-linecap="round"/>
+          <path d="M125 147 C127 124,131 106,140 91" stroke="#1a0810" stroke-width="4" stroke-linecap="round"/>
+          <path d="M150 143 C153 120,157 102,165 86" stroke="#1a0810" stroke-width="4.5" stroke-linecap="round"/>
+          <path d="M175 144 C178 121,183 103,192 88" stroke="#1a0810" stroke-width="4" stroke-linecap="round"/>
+          <path d="M198 148 C203 126,209 109,220 95" stroke="#1a0810" stroke-width="4" stroke-linecap="round"/>
+          <path d="M218 156 C225 136,233 120,246 107" stroke="#1a0810" stroke-width="3.5" stroke-linecap="round"/>
+          <path d="M236 166 C244 148,253 134,265 123" stroke="#1a0810" stroke-width="3" stroke-linecap="round"/>
+          <path d="M42 180 C80 148,130 133,160 132 C190 133,240 148,278 180" stroke="#1a0810" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+          <path d="M55 190 C90 195,130 196,160 196 C190 196,228 195,265 190" stroke="#1a0810" stroke-width="1.5" fill="none" stroke-linecap="round" opacity="0.5"/>
+          <path d="M60 110 C100 88,145 82,200 88 C230 92,255 100,265 110" stroke="#1a0810" stroke-width="10" fill="none" stroke-linecap="round" opacity="0.85"/>
+          <text x="28" y="98" font-size="20" opacity="0.7">✦</text><text x="272" y="80" font-size="14" opacity="0.5">✦</text>
+        </svg>
+      </div>
+      <div class="hero-tag"><p>Formada em</p><strong>Escola Audax · Out/25</strong></div>
+    </div>
+  </div>
+  <div class="scroll-indicator"><div class="scroll-line"></div><span>Scroll</span></div>
+</section>
+
+<!-- PROCESS -->
+<div class="process">
+  <div class="sec-eyebrow center"><span>Como funciona</span></div>
+  <div class="process-steps">
+    <div class="process-step fade-up"><div class="step-num">1</div><h4>Consulta</h4><p>Avaliação do formato dos olhos e desejo da cliente</p></div>
+    <div class="process-step fade-up" style="transition-delay:.1s"><div class="step-num">2</div><h4>Escolha</h4><p>Seleção da técnica ideal para seu estilo</p></div>
+    <div class="process-step fade-up" style="transition-delay:.2s"><div class="step-num">3</div><h4>Aplicação</h4><p>Procedimento com higiene e precisão total</p></div>
+    <div class="process-step fade-up" style="transition-delay:.3s"><div class="step-num">4</div><h4>Resultado</h4><p>Cílios perfeitos que duram até 3 semanas</p></div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about sec-padded" id="sobre">
+  <div class="about-img fade-up">
+    <div class="about-img-card">
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+        <svg width="200" height="200" viewBox="0 0 200 200" fill="none">
+          <circle cx="100" cy="100" r="80" fill="rgba(255,255,255,0.12)"/>
+          <circle cx="100" cy="100" r="56" fill="rgba(255,255,255,0.08)"/>
+          <text x="100" y="120" text-anchor="middle" font-size="68" fill="rgba(255,255,255,0.45)">👁</text>
+          <text x="100" y="158" text-anchor="middle" font-family="serif" font-size="12" fill="rgba(255,255,255,0.65)" letter-spacing="3">LASH DESIGNER</text>
+        </svg>
+      </div>
+    </div>
+    <div class="cert-badge"><strong>✓</strong><span>Certificada<br>Audax<br>2025</span></div>
+  </div>
+  <div class="about-text fade-up">
+    <div class="sec-eyebrow">Sobre Juliana</div>
+    <h2 class="sec-title">Arte nos <em>detalhes,</em><br>beleza no olhar</h2>
+    <p>Sou Juliana Silva, Lash Designer apaixonada pela arte de transformar olhares. Minha formação foi concluída na renomada <strong>Escola Audax</strong> em outubro de 2025, onde aprendi as mais avançadas técnicas de extensão de cílios.</p>
+    <p>Cada atendimento é único. Analiso o formato dos seus olhos, o estilo que você deseja e escolho a técnica perfeita para valorizar a sua beleza natural — seja ela discreta ou dramática.</p>
+    <p>Trabalho com materiais de altíssima qualidade, priorizando a saúde dos seus cílios naturais e a durabilidade do resultado.</p>
+    <div class="about-features">
+      <div class="feature-item"><div class="feature-icon">🪶</div><div class="feature-text"><strong>Materiais Premium</strong><p>Cola hipoalergênica e fios importados</p></div></div>
+      <div class="feature-item"><div class="feature-icon">✨</div><div class="feature-text"><strong>Técnicas Modernas</strong><p>Clássico, Volume Russo, Mega Volume</p></div></div>
+      <div class="feature-item"><div class="feature-icon">🛡️</div><div class="feature-text"><strong>Biossegurança</strong><p>Ambiente esterilizado e seguro</p></div></div>
+      <div class="feature-item"><div class="feature-icon">💖</div><div class="feature-text"><strong>Atendimento VIP</strong><p>Conforto e atenção exclusiva</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section class="portfolio-section" id="portfolio">
+  <div class="portfolio-header fade-up">
+    <div class="sec-eyebrow center">Portfólio</div>
+    <h2 class="sec-title" style="text-align:center">Trabalhos que <em>encantam</em></h2>
+    <p style="color:var(--muted);font-size:.93rem;line-height:1.8;font-weight:300;margin-top:12px;">Clique em qualquer foto para ver os detalhes da técnica e agendar. ✨</p>
+  </div>
+  <div class="portfolio-filters fade-up">
+    <button class="filter-btn active" data-filter="all">Todos</button>
+    <button class="filter-btn" data-filter="classico">Clássico</button>
+    <button class="filter-btn" data-filter="volume">Volume Russo</button>
+    <button class="filter-btn" data-filter="mega">Mega Volume</button>
+    <button class="filter-btn" data-filter="cateyee">Cat Eye</button>
+    <button class="filter-btn" data-filter="wet">Wet Look</button>
+    <button class="filter-btn" data-filter="manutencao">Manutenção</button>
+  </div>
+  <div class="portfolio-grid" id="portfolioGrid"></div>
+</section>
+
+<!-- PORTFOLIO MODAL -->
+<div class="portfolio-modal-overlay" id="portfolioModal">
+  <div class="portfolio-modal">
+    <button class="modal-close-btn" onclick="closePortfolioModal()">✕</button>
+    <div class="modal-img-side" id="modalImgSide">
+      <div id="modalImgFill" style="height:100%;min-height:460px;"></div>
+      <button class="modal-nav-btn modal-nav-prev" onclick="changeModalImg(-1)">‹</button>
+      <button class="modal-nav-btn modal-nav-next" onclick="changeModalImg(1)">›</button>
+      <div class="modal-img-counter" id="modalDots"></div>
+    </div>
+    <div class="modal-info-side">
+      <div>
+        <span class="modal-tag" id="modalTag"></span>
+        <h2 class="modal-title" id="modalTitle"></h2>
+        <div class="modal-subtitle" id="modalSubtitle"></div>
+        <p class="modal-desc" id="modalDesc"></p>
+        <div class="modal-details" id="modalDetails"></div>
+        <div class="modal-price" id="modalPrice"></div>
+      </div>
+      <div style="margin-top:20px;">
+        <div class="modal-gallery-thumbs" id="modalThumbs"></div>
+        <button class="modal-cta" style="margin-top:14px;" onclick="bookFromModal()">✨ Agendar este Serviço</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<section class="testimonials" id="depoimentos">
+  <div class="sec-eyebrow center" style="color:var(--gold-light);">Depoimentos</div>
+  <h2 class="sec-title" style="color:#fff;text-align:center;">O que nossas <em>clientes</em> dizem</h2>
+  <div class="testi-grid">
+    <div class="testi-card fade-up"><div class="stars">★★★★★</div><p class="testi-text">A Juliana transformou meu olhar! Nunca me senti tão bonita sem maquiagem. O procedimento foi rápido, confortável e o resultado durou mais de 3 semanas. Super indico!</p><div class="testi-author"><div class="testi-avatar">A</div><div><div class="testi-name">Amanda Ferreira</div><div class="testi-loc">Osasco, SP</div></div></div></div>
+    <div class="testi-card fade-up" style="transition-delay:.1s"><div class="stars">★★★★★</div><p class="testi-text">Fiz o Volume Russo para minha formatura e fui a mais elogiada da festa! A Juliana é atenciosa, o ambiente é aconchegante e o trabalho dela é impecável. Minha lashista para sempre!</p><div class="testi-author"><div class="testi-avatar">B</div><div><div class="testi-name">Beatriz Moura</div><div class="testi-loc">Osasco, SP</div></div></div></div>
+    <div class="testi-card fade-up" style="transition-delay:.2s"><div class="stars">★★★★★</div><p class="testi-text">Tinha medo de extensão de cílios pois tenho os cílios delicados, mas a Ju me explicou tudo antes e cuidou muito bem. Optei pelo Clássico e amei! Natural e perfeito para o dia a dia.</p><div class="testi-author"><div class="testi-avatar">C</div><div><div class="testi-name">Carla Santos</div><div class="testi-loc">Osasco, SP</div></div></div></div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section class="booking" id="agendamento">
+  <div class="booking-info fade-up">
+    <div class="sec-eyebrow">Agendamento Online</div>
+    <h2 class="sec-title">Marque seu <em>horário</em></h2>
+    <p>Reserve agora! Após o envio, a confirmação vai direto para o WhatsApp da Juliana e ela entrará em contato com você.</p>
+    <div class="contact-items">
+      <div class="contact-item"><div class="contact-ico">📍</div><div class="contact-detail"><strong>Endereço</strong><p>Estrada das Margaridas, 336<br>Jd. Santa Maria – Osasco/SP<br>CEP: 06150-490</p></div></div>
+      <div class="contact-item"><div class="contact-ico">📱</div><div class="contact-detail"><strong>WhatsApp</strong><p>+55 (11) 94820-1103</p></div></div>
+      <div class="contact-item"><div class="contact-ico">🕐</div><div class="contact-detail"><strong>Horário de Atendimento</strong><p>Segunda a Sábado · 9h às 20h</p></div></div>
+    </div>
+    <div class="admin-toggle">
+      <span class="admin-label">Painel da Juliana</span>
+      <label class="toggle-switch"><input type="checkbox" id="adminToggle" onchange="toggleAdminPanel()"><span class="toggle-slider"></span></label>
+    </div>
+    <p style="font-size:.73rem;color:var(--muted);">Ative para visualizar e gerenciar agendamentos.</p>
+  </div>
+  <div class="booking-form-wrap fade-up">
+    <div class="form-title">Agende sua sessão</div>
+    <p class="form-sub">Preencha e receba a confirmação via WhatsApp ✨</p>
+    <div class="form-row">
+      <div class="form-group"><label>Nome Completo *</label><input type="text" id="clientName" placeholder="Seu nome"></div>
+      <div class="form-group"><label>WhatsApp *</label><input type="tel" id="clientPhone" placeholder="(11) 99999-9999"></div>
+    </div>
+    <div class="form-group"><label>Serviço Desejado *</label>
+      <select id="serviceSelect">
+        <option value="">Selecione o serviço...</option>
+        <option value="Clássico Fio a Fio|R$ 120|1h30 – 2h|classico">Clássico Fio a Fio – R$ 120</option>
+        <option value="Volume Russo|R$ 180|2h – 2h30|volume">Volume Russo – R$ 180</option>
+        <option value="Efeito Cat Eye|R$ 150|1h30 – 2h|cateyee">Efeito Cat Eye – R$ 150</option>
+        <option value="Mega Volume|R$ 220|2h30 – 3h|mega">Mega Volume – R$ 220</option>
+        <option value="Wet Look|R$ 160|1h30 – 2h|wet">Wet Look – R$ 160</option>
+        <option value="Manutenção|R$ 80|1h – 1h30|manutencao">Manutenção – R$ 80</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Data *</label><input type="date" id="appointmentDate" onchange="refreshSlots()"></div>
+      <div class="form-group"><label>Turno *</label>
+        <select id="periodSelect" onchange="updateTimeSlots()">
+          <option value="">Selecione...</option>
+          <option value="morning">Manhã (9h – 12h)</option>
+          <option value="afternoon">Tarde (13h – 17h)</option>
+          <option value="evening">Noite (17h – 20h)</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label>Horário *</label><div class="time-slots" id="timeSlots"><p style="font-size:.76rem;color:var(--muted);grid-column:1/-1;padding:8px 0;">Selecione um turno acima</p></div></div>
+    <div class="form-group"><label>Observações</label><textarea id="clientNotes" placeholder="Primeira vez, alergia, evento especial..."></textarea></div>
+    <button class="form-submit" id="submitBtn" onclick="submitBooking()">
+      <span id="submitContent" style="display:flex;align-items:center;gap:10px;"><span>✨</span><span>Confirmar Agendamento</span></span>
+    </button>
+    <div class="whatsapp-note"><span style="font-size:1.1rem;color:#25D366;">💬</span>A confirmação será enviada para o WhatsApp da Juliana e você receberá retorno em breve.</div>
+  </div>
+</section>
+
+<!-- ADMIN PANEL -->
+<section class="agenda-panel" id="adminPanel" style="display:none;">
+  <div class="sec-eyebrow">Painel de Gestão</div>
+  <h2 class="sec-title">Agendamentos <em>Recebidos</em></h2>
+  <div class="agenda-stats">
+    <div class="stat-card"><div class="stat-num" id="statTotal">0</div><div class="stat-label">Total</div></div>
+    <div class="stat-card"><div class="stat-num" id="statPending">0</div><div class="stat-label">Pendentes</div></div>
+    <div class="stat-card"><div class="stat-num" id="statConfirmed">0</div><div class="stat-label">Confirmados</div></div>
+    <div class="stat-card"><div class="stat-num" id="statToday">0</div><div class="stat-label">Hoje</div></div>
+  </div>
+  <div class="agenda-table-wrap">
+    <table class="agenda-table" id="agendaTable">
+      <thead><tr><th>Cliente</th><th>WhatsApp</th><th>Serviço</th><th>Data</th><th>Horário</th><th>Status</th><th>Ações</th></tr></thead>
+      <tbody id="agendaBody"></tbody>
+    </table>
+    <div class="agenda-empty" id="agendaEmpty" style="display:none;"><div class="empty-icon">📅</div><p>Nenhum agendamento ainda.</p></div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">Juliana <span>Silva</span></div>
+      <p>Lash Designer apaixonada por transformar olhares com técnica, carinho e materiais de altíssima qualidade.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Portfólio</h4>
+      <ul>
+        <li><a onclick="filterAndScroll('classico')">Clássico Fio a Fio</a></li>
+        <li><a onclick="filterAndScroll('volume')">Volume Russo</a></li>
+        <li><a onclick="filterAndScroll('cateyee')">Efeito Cat Eye</a></li>
+        <li><a onclick="filterAndScroll('mega')">Mega Volume</a></li>
+        <li><a onclick="filterAndScroll('wet')">Wet Look</a></li>
+        <li><a onclick="filterAndScroll('manutencao')">Manutenção</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <p>📍 Estrada das Margaridas, 336<br>Jd. Santa Maria – Osasco/SP<br>CEP: 06150-490</p><br>
+      <p>📱 (11) 94820-1103</p><br>
+      <p>🕐 Seg–Sáb · 9h às 20h</p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Juliana Silva Lash Designer · Todos os direitos reservados.</p>
+    <div class="social-links">
+      <a class="social-link" href="javascript:void(0)" onclick="window.open('https://wa.me/5511948201103','_blank')">💬</a>
+      <a class="social-link" href="javascript:void(0)">📷</a>
+      <a class="social-link" href="javascript:void(0)">👍</a>
+    </div>
+  </div>
+</footer>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-box" style="max-width:480px;">
+    <div class="modal-icon-big">✨</div>
+    <div class="modal-box-title">Agendamento Registrado!</div>
+    <div id="modalSummary" style="background:var(--cream);border-radius:4px;padding:18px 20px;margin:0 0 20px;text-align:left;font-size:.88rem;line-height:1.8;color:var(--dark);"></div>
+
+    <!-- WhatsApp CTA — big green button -->
+    <a id="waFallbackBtn"
+       href="javascript:void(0)"
+       onclick="openWA()"
+       style="display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:#25D366;color:#fff;padding:16px;border-radius:4px;font-family:'Jost',sans-serif;font-size:.85rem;letter-spacing:2px;text-transform:uppercase;text-decoration:none;font-weight:500;margin-bottom:12px;cursor:pointer;transition:background .3s;">
+      <span style="font-size:1.3rem;">💬</span> Enviar para o WhatsApp da Juliana
+    </a>
+    <p style="font-size:.72rem;color:var(--muted);margin-bottom:20px;text-align:center;">Clique no botão acima para enviar os dados pelo WhatsApp</p>
+
+    <button class="modal-close-main" onclick="closeSuccessModal()">Fechar 💖</button>
+  </div>
+</div>
+
+<div id="previewBanner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a2e;color:#fff;padding:12px 24px;font-family:'Jost',sans-serif;font-size:.8rem;display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;text-align:center;">
+  <span>⚠️ <strong>Você está no preview do Claude.ai.</strong> O WhatsApp só abre direto quando o site estiver hospedado. Clique em "Abrir link" no popup para enviar.</span>
+  <button onclick="document.getElementById('previewBanner').style.display='none'" style="background:rgba(255,255,255,0.15);border:none;color:#fff;padding:5px 14px;border-radius:20px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.75rem;">Entendi ✕</button>
+</div>
+
+<script>
+// Show banner only when inside an iframe (claude.ai preview)
+if (window.self !== window.top) {
+  document.getElementById('previewBanner').style.display = 'flex';
+}
+</script>
+
+<script>
+// =====================================================
+// SCROLL HELPER — avoids href anchor popups
+// =====================================================
+function scrollTo(id) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({behavior:'smooth', block:'start'});
+}
+// =====================================================
+const portfolioData = [
+  { id:1, filter:'classico', tag:'Mais Vendido',
+    title:'Clássico Fio a Fio', subtitle:'Natural · Delicado · Refinado',
+    desc:'A técnica clássica aplica um fio de extensão por cílio natural. O resultado é sutil e sofisticado — perfeito para realçar o olhar no dia a dia. Ideal para quem está começando ou ama um look clean e natural.',
+    price:'R$ 120', duration:'1h30 – 2h', durability:'até 3 semanas', level:'Natural',
+    imgs:[
+      {grad:'linear-gradient(160deg,#f5c6cc 0%,#e8909e 40%,#c8707e 100%)',label:'Clássico – Vista Frontal',icon:'👁'},
+      {grad:'linear-gradient(145deg,#fce8ec 0%,#f0b0bc 50%,#d88898 100%)',label:'Clássico – Detalhe',icon:'✨'},
+      {grad:'linear-gradient(170deg,#ffe4e8 0%,#f5a0b0 50%,#e07888 100%)',label:'Clássico – Resultado Final',icon:'💖'},
+    ]},
+  { id:2, filter:'volume', tag:'⭐ Favorito',
+    title:'Volume Russo', subtitle:'Dramático · Cheio · Sedutor',
+    desc:'Leques de 3 a 6 fios ultra-finos por cílio natural. O resultado é um olhar visivelmente mais cheio e dramático. Perfeito para eventos, festas ou quem ama um look poderoso todos os dias.',
+    price:'R$ 180', duration:'2h – 2h30', durability:'até 3 semanas', level:'Dramático',
+    imgs:[
+      {grad:'linear-gradient(160deg,#f0d8e8 0%,#dda8cc 40%,#c888b8 100%)',label:'Volume Russo – Abertura dos Leques',icon:'🪶'},
+      {grad:'linear-gradient(145deg,#f8e8f4 0%,#e8b8d8 50%,#d090c0 100%)',label:'Volume Russo – Densidade',icon:'✦'},
+      {grad:'linear-gradient(170deg,#fdf0f8 0%,#f0c8e0 50%,#d8a0c8 100%)',label:'Volume Russo – Resultado Final',icon:'💜'},
+    ]},
+  { id:3, filter:'cateyee', tag:'Tendência',
+    title:'Efeito Cat Eye', subtitle:'Felino · Alongado · Sofisticado',
+    desc:'Progressão estratégica dos tamanhos — menores no canto interno, progressivamente maiores no externo. Cria o cobiçado efeito gato que alonga e levanta o olhar de forma natural e sofisticada.',
+    price:'R$ 150', duration:'1h30 – 2h', durability:'até 3 semanas', level:'Sofisticado',
+    imgs:[
+      {grad:'linear-gradient(160deg,#fce8c4 0%,#e8c080 40%,#c9a040 100%)',label:'Cat Eye – Efeito Felino',icon:'🐱'},
+      {grad:'linear-gradient(145deg,#fff4dc 0%,#f0d090 50%,#d8a850 100%)',label:'Cat Eye – Progressão Lateral',icon:'✨'},
+      {grad:'linear-gradient(170deg,#fffaec 0%,#f8e0a0 50%,#e0c060 100%)',label:'Cat Eye – Resultado',icon:'👁'},
+    ]},
+  { id:4, filter:'mega', tag:'Luxo',
+    title:'Mega Volume', subtitle:'Poderoso · Glamouroso · Impactante',
+    desc:'Leques de 10 a 20 fios ultra-finos por cílio natural. O resultado é um olhar extremamente cheio e glamouroso. Para quem não passa despercebida e ama causar impacto onde quer que vá.',
+    price:'R$ 220', duration:'2h30 – 3h', durability:'até 3 semanas', level:'Extremo',
+    imgs:[
+      {grad:'linear-gradient(160deg,#d8eef5 0%,#a8d0e8 40%,#7ab8d4 100%)',label:'Mega Volume – Glamour Total',icon:'💎'},
+      {grad:'linear-gradient(145deg,#e8f4fc 0%,#b8d8f0 50%,#88c0e0 100%)',label:'Mega Volume – Máxima Densidade',icon:'✦'},
+      {grad:'linear-gradient(170deg,#f0f8ff 0%,#c8e4f8 50%,#98cce8 100%)',label:'Mega Volume – Resultado Final',icon:'👑'},
+    ]},
+  { id:5, filter:'wet', tag:'Moderno',
+    title:'Wet Look', subtitle:'Tendência · Ousado · Diferente',
+    desc:'A tendência que tomou o mundo! Cílios agrupados estrategicamente simulam o efeito molhado. Diferente, moderno e cheio de personalidade — como se você acabou de sair do mar.',
+    price:'R$ 160', duration:'1h30 – 2h', durability:'até 3 semanas', level:'Moderno',
+    imgs:[
+      {grad:'linear-gradient(160deg,#e8f5d8 0%,#b8e0a0 40%,#88c870 100%)',label:'Wet Look – Efeito Molhado',icon:'💧'},
+      {grad:'linear-gradient(145deg,#f0f8e8 0%,#c8e8b0 50%,#98d080 100%)',label:'Wet Look – Agrupamentos',icon:'✨'},
+      {grad:'linear-gradient(170deg,#f8fff0 0%,#d8f0c0 50%,#a8e090 100%)',label:'Wet Look – Resultado Final',icon:'🌿'},
+    ]},
+  { id:6, filter:'manutencao', tag:'Essencial',
+    title:'Manutenção', subtitle:'Cuidado · Renovação · Durabilidade',
+    desc:'Reposição dos cílios que caíram naturalmente com o ciclo de renovação. Manutenção em dia é o segredo para sempre ter um olhar impecável. Recomendada a cada 2–3 semanas.',
+    price:'R$ 80', duration:'1h – 1h30', durability:'contínuo', level:'Manutenção',
+    imgs:[
+      {grad:'linear-gradient(160deg,#f5e8d8 0%,#e0c0a0 40%,#c09870 100%)',label:'Manutenção – Preenchimento',icon:'🔄'},
+      {grad:'linear-gradient(145deg,#faf0e4 0%,#ecd0b0 50%,#d0a880 100%)',label:'Manutenção – Processo',icon:'✨'},
+      {grad:'linear-gradient(170deg,#fffaf4 0%,#f4e0c4 50%,#dab890 100%)',label:'Manutenção – Resultado',icon:'💫'},
+    ]},
+];
+
+const lashSVGs = {
+  classico:`<svg width="170" height="85" viewBox="0 0 170 85" fill="none"><ellipse cx="85" cy="68" rx="78" ry="24" fill="rgba(255,255,255,0.15)"/><path d="M10 56 C42 30,70 20,85 20 C100 20,128 30,160 56" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M20 54 C17 39,15 26,18 12" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M43 47 C42 31,43 18,48 3" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M67 41 C68 25,70 11,76 -4" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M85 38 C87 22,90 8,96 -7" stroke="white" stroke-width="2.8" stroke-linecap="round"/><path d="M103 40 C107 24,111 10,119 -4" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M124 45 C129 30,135 16,144 3" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M146 52 C153 38,159 25,165 14" stroke="white" stroke-width="2.5" stroke-linecap="round"/></svg>`,
+  volume:`<svg width="170" height="85" viewBox="0 0 170 85" fill="none"><ellipse cx="85" cy="68" rx="78" ry="24" fill="rgba(255,255,255,0.15)"/><path d="M10 56 C42 30,70 20,85 20 C100 20,128 30,160 56" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/><g stroke="white" stroke-linecap="round" opacity=".88"><path d="M16 55 C12 40,10 27,12 13" stroke-width="1.3"/><path d="M22 53 C19 37,19 24,23 10" stroke-width="1.3"/><path d="M28 51 C27 35,29 22,34 7" stroke-width="1.3"/><path d="M38 48 C38 31,41 18,46 3" stroke-width="1.5"/><path d="M47 45 C48 28,52 15,58 0" stroke-width="1.5"/><path d="M58 42 C60 25,65 11,72 -4" stroke-width="1.8"/><path d="M69 39 C72 22,78 8,86 -6" stroke-width="1.8"/><path d="M82 37 C85 20,90 6,97 -8" stroke-width="2"/><path d="M95 38 C99 21,105 7,113 -6" stroke-width="1.8"/><path d="M107 40 C112 24,118 10,127 -3" stroke-width="1.8"/><path d="M118 43 C124 27,131 13,141 0" stroke-width="1.5"/><path d="M130 46 C137 31,145 17,154 4" stroke-width="1.5"/><path d="M143 50 C150 36,157 23,163 11" stroke-width="1.3"/><path d="M153 53 C159 40,164 28,168 18" stroke-width="1.3"/></g></svg>`,
+  cateyee:`<svg width="170" height="85" viewBox="0 0 170 85" fill="none"><ellipse cx="85" cy="68" rx="78" ry="24" fill="rgba(255,255,255,0.15)"/><path d="M10 56 C42 30,70 20,85 20 C100 20,128 30,160 56" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M18 54 C15 44,14 35,16 23" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity=".8"/><path d="M37 48 C36 36,37 25,41 14" stroke="white" stroke-width="2" stroke-linecap="round" opacity=".85"/><path d="M58 43 C59 29,62 17,68 4" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity=".9"/><path d="M78 39 C80 24,84 11,91 -3" stroke="white" stroke-width="3" stroke-linecap="round"/><path d="M98 38 C102 22,108 8,116 -6" stroke="white" stroke-width="3.5" stroke-linecap="round"/><path d="M116 40 C122 24,130 9,140 -5" stroke="white" stroke-width="4" stroke-linecap="round"/><path d="M133 44 C140 29,149 15,158 2" stroke="white" stroke-width="3.5" stroke-linecap="round" opacity=".9"/></svg>`,
+  mega:`<svg width="170" height="85" viewBox="0 0 170 85" fill="none"><ellipse cx="85" cy="68" rx="78" ry="24" fill="rgba(255,255,255,0.15)"/><path d="M10 56 C42 30,70 20,85 20 C100 20,128 30,160 56" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/><g stroke="white" stroke-linecap="round" stroke-width="1" opacity=".82"><path d="M14 55 C10 40,8 27,10 13"/><path d="M18 54 C15 38,14 25,17 11"/><path d="M22 52 C20 36,20 23,24 9"/><path d="M27 51 C26 34,27 21,32 7"/><path d="M33 49 C32 32,34 19,39 5"/><path d="M39 47 C39 30,42 17,47 3"/><path d="M45 45 C46 28,50 15,56 1"/><path d="M52 43 C54 26,58 13,65 -1"/><path d="M60 41 C63 24,68 10,76 -4"/><path d="M68 39 C72 22,77 8,86 -6"/><path d="M76 38 C80 21,86 7,95 -7"/><path d="M85 37 C89 20,95 6,104 -8"/><path d="M94 38 C99 21,105 7,114 -6"/><path d="M103 39 C108 22,115 8,124 -5"/><path d="M112 40 C118 23,126 9,136 -4"/><path d="M121 42 C127 26,135 12,145 -1"/><path d="M130 44 C137 28,145 14,154 1"/><path d="M139 47 C146 32,153 19,161 7"/><path d="M148 50 C154 36,161 24,167 13"/><path d="M156 53 C162 40,167 29,170 19"/></g></svg>`,
+  wet:`<svg width="170" height="85" viewBox="0 0 170 85" fill="none"><ellipse cx="85" cy="68" rx="78" ry="24" fill="rgba(255,255,255,0.15)"/><path d="M10 56 C42 30,70 20,85 20 C100 20,128 30,160 56" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M23 53 C20 37,17 23,20 8" stroke="white" stroke-width="6" stroke-linecap="round" opacity=".8"/><path d="M48 46 C46 30,47 16,52 1" stroke="white" stroke-width="6.5" stroke-linecap="round" opacity=".85"/><path d="M72 40 C71 24,74 9,80 -6" stroke="white" stroke-width="7" stroke-linecap="round" opacity=".9"/><path d="M97 39 C99 23,103 9,110 -5" stroke="white" stroke-width="6.5" stroke-linecap="round" opacity=".85"/><path d="M121 42 C124 26,129 12,137 -1" stroke="white" stroke-width="6" stroke-linecap="round" opacity=".85"/><path d="M145 49 C150 34,155 21,162 9" stroke="white" stroke-width="5" stroke-linecap="round" opacity=".78"/><path d="M23 36 C22 30,22 24,23 18" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/><path d="M72 27 C72 21,72 15,74 9" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round"/></svg>`,
+  manutencao:`<svg width="170" height="85" viewBox="0 0 170 85" fill="none"><ellipse cx="85" cy="68" rx="78" ry="24" fill="rgba(255,255,255,0.15)"/><path d="M10 56 C42 30,70 20,85 20 C100 20,128 30,160 56" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M36 49 C35 33,37 19,42 5" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M58 43 C58 27,60 13,66 -1" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity=".55" stroke-dasharray="5 4"/><path d="M80 39 C81 23,84 9,91 -5" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M100 39 C103 23,108 9,115 -4" stroke="white" stroke-width="2.5" stroke-linecap="round" opacity=".55" stroke-dasharray="5 4"/><path d="M120 41 C124 26,129 12,137 -1" stroke="white" stroke-width="2.5" stroke-linecap="round"/><path d="M145 16 C153 12,158 20,153 28" stroke="white" stroke-width="2" fill="none" stroke-linecap="round"/><path d="M153 28 L149 24 M153 28 L157 24" stroke="white" stroke-width="1.8" stroke-linecap="round"/></svg>`
+};
+
+// =====================================================
+// RENDER PORTFOLIO
+// =====================================================
+let activeFilter = 'all';
+function renderPortfolio(filter) {
+  activeFilter = filter;
+  const grid = document.getElementById('portfolioGrid');
+  const items = filter === 'all' ? portfolioData : portfolioData.filter(p => p.filter === filter);
+  grid.innerHTML = items.map((item, i) => `
+    <div class="portfolio-card fade-up" style="transition-delay:${i*0.07}s" onclick="openPortfolioModal(${item.id})">
+      <div class="portfolio-img" style="background:${item.imgs[0].grad};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;">
+        <div style="font-size:3.5rem;opacity:0.35;">${item.imgs[0].icon}</div>
+        ${lashSVGs[item.filter]||lashSVGs.classico}
+      </div>
+      <div class="card-tag">${item.tag}</div>
+      <div class="portfolio-overlay">
+        <h3>${item.title}</h3>
+        <span>${item.subtitle}</span>
+      </div>
+      <div class="card-zoom-icon">🔍</div>
+    </div>
+  `).join('');
+  grid.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+}
+
+document.querySelectorAll('.filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    renderPortfolio(btn.dataset.filter);
+  });
+});
+
+function filterAndScroll(filter) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.toggle('active', b.dataset.filter === filter));
+  renderPortfolio(filter);
+  document.getElementById('portfolio').scrollIntoView({behavior:'smooth'});
+}
+
+// =====================================================
+// PORTFOLIO MODAL
+// =====================================================
+let modalItem = null, modalImgIdx = 0;
+
+function openPortfolioModal(id) {
+  modalItem = portfolioData.find(p => p.id === id);
+  if (!modalItem) return;
+  modalImgIdx = 0;
+  renderModalContent();
+  document.getElementById('portfolioModal').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function renderModalContent() {
+  const m = modalItem;
+  document.getElementById('modalTag').textContent = m.tag;
+  document.getElementById('modalTitle').textContent = m.title;
+  document.getElementById('modalSubtitle').textContent = m.subtitle;
+  document.getElementById('modalDesc').textContent = m.desc;
+  document.getElementById('modalPrice').textContent = m.price;
+  document.getElementById('modalDetails').innerHTML = `
+    <div class="modal-detail-row"><span>Duração</span><span>⏱ ${m.duration}</span></div>
+    <div class="modal-detail-row"><span>Durabilidade</span><span>📅 ${m.durability}</span></div>
+    <div class="modal-detail-row"><span>Volume</span><span>✨ ${m.level}</span></div>
+    <div class="modal-detail-row"><span>Investimento</span><span style="color:var(--rose);font-weight:600;">${m.price}</span></div>
+  `;
+  renderModalImg();
+  renderModalThumbs();
+}
+
+function renderModalImg() {
+  const img = modalItem.imgs[modalImgIdx];
+  document.getElementById('modalImgFill').style.cssText = `height:100%;min-height:460px;background:${img.grad};display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px;`;
+  document.getElementById('modalImgFill').innerHTML = `
+    <div style="font-size:5rem;opacity:0.4;">${img.icon}</div>
+    ${lashSVGs[modalItem.filter]||lashSVGs.classico}
+    <p style="color:rgba(255,255,255,0.7);font-size:.72rem;letter-spacing:2px;text-transform:uppercase;">${img.label}</p>
+  `;
+  document.getElementById('modalDots').innerHTML = modalItem.imgs.map((_, i) =>
+    `<div class="modal-dot ${i===modalImgIdx?'active':''}" onclick="goToImg(${i})"></div>`
+  ).join('');
+  document.querySelectorAll('.modal-thumb').forEach((t,i) => t.classList.toggle('active', i===modalImgIdx));
+}
+
+function renderModalThumbs() {
+  document.getElementById('modalThumbs').innerHTML = modalItem.imgs.map((img,i) =>
+    `<div class="modal-thumb ${i===0?'active':''}" onclick="goToImg(${i})">
+      <div style="background:${img.grad};width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-size:1.4rem;">${img.icon}</div>
+    </div>`
+  ).join('');
+}
+
+function goToImg(idx) { modalImgIdx = idx; renderModalImg(); }
+function changeModalImg(dir) { modalImgIdx = (modalImgIdx + dir + modalItem.imgs.length) % modalItem.imgs.length; renderModalImg(); }
+function closePortfolioModal() { document.getElementById('portfolioModal').classList.remove('active'); document.body.style.overflow = ''; }
+
+function bookFromModal() {
+  closePortfolioModal();
+  if (modalItem) {
+    const map = {classico:'Clássico Fio a Fio|R$ 120|1h30 – 2h|classico',volume:'Volume Russo|R$ 180|2h – 2h30|volume',cateyee:'Efeito Cat Eye|R$ 150|1h30 – 2h|cateyee',mega:'Mega Volume|R$ 220|2h30 – 3h|mega',wet:'Wet Look|R$ 160|1h30 – 2h|wet',manutencao:'Manutenção|R$ 80|1h – 1h30|manutencao'};
+    document.getElementById('serviceSelect').value = map[modalItem.filter] || '';
+  }
+  setTimeout(() => document.getElementById('agendamento').scrollIntoView({behavior:'smooth'}), 200);
+}
+
+// =====================================================
+// BOOKING SYSTEM WITH STORAGE
+// =====================================================
+let bookings = [];
+let selectedTime = '';
+
+const slotsMap = {
+  morning:['9:00','9:30','10:00','10:30','11:00','11:30'],
+  afternoon:['13:00','13:30','14:00','14:30','15:00','15:30','16:00','16:30'],
+  evening:['17:00','17:30','18:00','18:30','19:00','19:30']
+};
+
+async function loadBookings() {
+  try {
+    const r = await window.storage.get('juliana-lash-v2');
+    bookings = r ? JSON.parse(r.value) : [];
+  } catch(e) { bookings = []; }
+  updateStats();
+  if(document.getElementById('adminToggle').checked) renderAdminTable();
+}
+
+async function saveBookings() {
+  try { await window.storage.set('juliana-lash-v2', JSON.stringify(bookings)); }
+  catch(e) { console.error('save err',e); }
+}
+
+document.getElementById('appointmentDate').min = new Date().toISOString().split('T')[0];
+
+function refreshSlots() {
+  if(document.getElementById('periodSelect').value) updateTimeSlots();
+}
+
+function updateTimeSlots() {
+  const period = document.getElementById('periodSelect').value;
+  const date = document.getElementById('appointmentDate').value;
+  const container = document.getElementById('timeSlots');
+  container.innerHTML = '';
+  selectedTime = '';
+  if (!period) { container.innerHTML = '<p style="font-size:.76rem;color:var(--muted);grid-column:1/-1;padding:8px 0;">Selecione um turno acima</p>'; return; }
+  const booked = date ? bookings.filter(b=>b.date===date&&b.status!=='cancelled').map(b=>b.time) : [];
+  slotsMap[period].forEach(time => {
+    const busy = booked.includes(time);
+    const d = document.createElement('div');
+    d.className = 'time-slot' + (busy?' unavailable':'');
+    d.textContent = time;
+    if(busy) d.title='Ocupado';
+    else d.onclick = () => { document.querySelectorAll('.time-slot').forEach(s=>s.classList.remove('active')); d.classList.add('active'); selectedTime=time; };
+    container.appendChild(d);
+  });
+}
+
+document.getElementById('clientPhone').addEventListener('input', function(){
+  let v=this.value.replace(/\D/g,'');
+  if(v.length<=11){v=v.replace(/^(\d{2})(\d{5})(\d{4})$/,'($1) $2-$3').replace(/^(\d{2})(\d{4})(\d{4})$/,'($1) $2-$3').replace(/^(\d{2})(\d{1,5})$/,'($1) $2').replace(/^(\d{1,2})$/,'($1');}
+  this.value=v;
+});
+
+// ---------- field validation helpers ----------
+function setFieldError(id, msg) {
+  const el = document.getElementById(id);
+  el.style.borderColor = '#c0303a';
+  el.style.background = '#fff5f5';
+  let hint = el.parentElement.querySelector('.field-hint');
+  if (!hint) { hint = document.createElement('p'); hint.className='field-hint'; hint.style.cssText='font-size:.72rem;color:#c0303a;margin-top:5px;'; el.parentElement.appendChild(hint); }
+  hint.textContent = msg;
+}
+function clearFieldError(id) {
+  const el = document.getElementById(id);
+  el.style.borderColor = '';
+  el.style.background = '';
+  const hint = el.parentElement.querySelector('.field-hint');
+  if (hint) hint.remove();
+}
+function clearAllErrors() {
+  ['clientName','clientPhone','serviceSelect','appointmentDate','periodSelect'].forEach(clearFieldError);
+  const slotWrap = document.getElementById('timeSlots');
+  slotWrap.style.outline=''; slotWrap.style.borderRadius='';
+}
+
+async function submitBooking() {
+  clearAllErrors();
+
+  const name    = document.getElementById('clientName').value.trim();
+  const phone   = document.getElementById('clientPhone').value.trim();
+  const svcFull = document.getElementById('serviceSelect').value;
+  const date    = document.getElementById('appointmentDate').value;
+  const period  = document.getElementById('periodSelect').value;
+  const notes   = document.getElementById('clientNotes').value.trim();
+
+  // ---- validation ----
+  let firstErrorId = null;
+  if (!name)    { setFieldError('clientName','Por favor, informe seu nome completo.'); firstErrorId = firstErrorId||'clientName'; }
+  if (!phone || phone.replace(/\D/g,'').length < 10) { setFieldError('clientPhone','Informe um WhatsApp válido com DDD.'); firstErrorId = firstErrorId||'clientPhone'; }
+  if (!svcFull) { setFieldError('serviceSelect','Selecione o serviço desejado.'); firstErrorId = firstErrorId||'serviceSelect'; }
+  if (!date)    { setFieldError('appointmentDate','Escolha a data do atendimento.'); firstErrorId = firstErrorId||'appointmentDate'; }
+  if (!period)  { setFieldError('periodSelect','Escolha um turno.'); firstErrorId = firstErrorId||'periodSelect'; }
+  if (!selectedTime) {
+    const slotWrap = document.getElementById('timeSlots');
+    slotWrap.style.outline='2px solid #c0303a'; slotWrap.style.borderRadius='2px';
+    if (!firstErrorId) firstErrorId = 'timeSlots';
+  }
+
+  if (firstErrorId) {
+    document.getElementById(firstErrorId).scrollIntoView({behavior:'smooth', block:'center'});
+    showToast('⚠️ Verifique os campos destacados em vermelho.','error');
+    return;
+  }
+
+  // Remove error styles on valid inputs
+  ['clientName','clientPhone','serviceSelect','appointmentDate','periodSelect'].forEach(id => {
+    document.getElementById(id).style.borderColor = '#25a855';
+    document.getElementById(id).style.background = '#f2fbf5';
+  });
+
+  const [service, price, duration] = svcFull.split('|');
+  const dateObj  = new Date(date + 'T12:00:00');
+  const fmtDate  = dateObj.toLocaleDateString('pt-BR', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+  const fmtShort = dateObj.toLocaleDateString('pt-BR', {day:'2-digit', month:'2-digit', year:'numeric'});
+
+  // ---- loading state ----
+  const btn = document.getElementById('submitBtn');
+  btn.disabled = true;
+  document.getElementById('submitContent').innerHTML = '<div class="spinner"></div><span>Enviando para o WhatsApp...</span>';
+
+  // ---- save to DB ----
+  const booking = {
+    id: Date.now().toString(),
+    name, phone, service, price, duration,
+    date, time: selectedTime, notes,
+    status: 'pending',
+    createdAt: new Date().toISOString()
+  };
+  bookings.push(booking);
+  await saveBookings();
+  updateStats();
+  if (document.getElementById('adminToggle').checked) renderAdminTable();
+
+  // ---- build WhatsApp message ----
+  const waMsg =
+`✨ *NOVO AGENDAMENTO – Juliana Silva Lash* ✨
+
+👤 *Cliente:* ${name}
+📱 *WhatsApp:* ${phone}
+💅 *Serviço:* ${service}
+💰 *Valor:* ${price}
+⏱ *Duração estimada:* ${duration}
+📅 *Data:* ${fmtDate}
+🕐 *Horário:* ${selectedTime}${notes ? `\n📝 *Observações:* ${notes}` : ''}
+
+📍 *Local:* Estrada das Margaridas, 336 – Jd. Santa Maria, Osasco/SP
+
+_Agendado pelo site oficial_ 🌸`;
+
+  // Store WA URL globally so the button in modal can use it
+  currentWaURL = `https://wa.me/5511948201103?text=${encodeURIComponent(waMsg)}`;
+
+  // ---- populate success modal ----
+  document.getElementById('modalSummary').innerHTML =
+    `<div style="margin-bottom:4px;">👤 <strong>${name}</strong></div>` +
+    `<div>📅 <strong>${fmtDate}</strong></div>` +
+    `<div>🕐 Horário: <strong>${selectedTime}</strong></div>` +
+    `<div>💅 <strong>${service}</strong> — ${price}</div>` +
+    (notes ? `<div style="margin-top:6px;font-size:.82rem;color:var(--muted);">📝 ${notes}</div>` : '');
+
+  document.getElementById('successModal').classList.add('active');
+
+  // ---- reset form ----
+  btn.disabled = false;
+  document.getElementById('submitContent').innerHTML = '<span>✨</span><span>Confirmar Agendamento</span>';
+  ['clientName','clientPhone','clientNotes'].forEach(id => {
+    const el = document.getElementById(id);
+    el.value = ''; el.style.borderColor=''; el.style.background='';
+  });
+  ['serviceSelect','appointmentDate','periodSelect'].forEach(id => {
+    const el = document.getElementById(id);
+    el.value=''; el.style.borderColor=''; el.style.background='';
+  });
+  selectedTime = '';
+  updateTimeSlots();
+}
+
+// =====================================================
+// ADMIN PANEL
+// =====================================================
+function toggleAdminPanel() {
+  const show = document.getElementById('adminToggle').checked;
+  document.getElementById('adminPanel').style.display = show?'block':'none';
+  if(show){ renderAdminTable(); setTimeout(()=>document.getElementById('adminPanel').scrollIntoView({behavior:'smooth'}),100); }
+}
+
+function updateStats() {
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('statTotal').textContent = bookings.length;
+  document.getElementById('statPending').textContent = bookings.filter(b=>b.status==='pending').length;
+  document.getElementById('statConfirmed').textContent = bookings.filter(b=>b.status==='confirmed').length;
+  document.getElementById('statToday').textContent = bookings.filter(b=>b.date===today).length;
+  document.getElementById('clientCount').textContent = (bookings.length+200)+'+';
+}
+
+function renderAdminTable() {
+  const tbody = document.getElementById('agendaBody');
+  const empty = document.getElementById('agendaEmpty');
+  if(!bookings.length){ tbody.innerHTML=''; empty.style.display='block'; return; }
+  empty.style.display='none';
+  const sorted = [...bookings].sort((a,b)=>a.date!==b.date?(a.date>b.date?1:-1):(a.time>b.time?1:-1));
+  const cls = {pending:'status-pending',confirmed:'status-confirmed',cancelled:'status-cancelled'};
+  const lbl = {pending:'Pendente',confirmed:'Confirmado',cancelled:'Cancelado'};
+  tbody.innerHTML = sorted.map(b=>{
+    const d=new Date(b.date+'T12:00:00');
+    const fmt=d.toLocaleDateString('pt-BR',{day:'2-digit',month:'2-digit',year:'numeric'});
+    return `<tr>
+      <td><strong>${b.name}</strong>${b.notes?`<br><small style="color:var(--muted);font-size:.73rem;">${b.notes}</small>`:''}</td>
+      <td><a href="https://wa.me/55${b.phone.replace(/\D/g,'')}" target="_blank" style="color:var(--rose);text-decoration:none;">📱 ${b.phone}</a></td>
+      <td>${b.service}<br><small style="color:var(--muted)">${b.price} · ${b.duration}</small></td>
+      <td>${fmt}</td>
+      <td><strong>${b.time}</strong></td>
+      <td><span class="status-badge ${cls[b.status]}">${lbl[b.status]}</span></td>
+      <td><div class="agenda-actions">
+        ${b.status==='pending'?`<button class="btn-sm btn-confirm" onclick="changeStatus('${b.id}','confirmed')">✓ Confirmar</button>`:''}
+        ${b.status!=='cancelled'?`<button class="btn-sm btn-cancel" onclick="changeStatus('${b.id}','cancelled')">✕ Cancelar</button>`:''}
+      </div></td>
+    </tr>`;
+  }).join('');
+}
+
+async function changeStatus(id, status) {
+  const b = bookings.find(x=>x.id===id);
+  if(!b) return;
+  b.status = status;
+  await saveBookings();
+  updateStats();
+  renderAdminTable();
+  if(status==='confirmed'){
+    const msg=`✅ Olá ${b.name}! Seu agendamento está confirmado! 🎉\n\n📅 ${b.date} às ${b.time}\n💅 ${b.service}\n\nTe aguardo com carinho! 💖\n– Juliana Silva, Lash Designer`;
+    window.open(`https://wa.me/55${b.phone.replace(/\D/g,'')}?text=${encodeURIComponent(msg)}`,'_blank');
+  }
+  showToast(status==='confirmed'?'✅ Confirmado! WhatsApp enviado.':'❌ Agendamento cancelado.', status==='confirmed'?'success':'error');
+}
+
+// =====================================================
+// UTILS
+// =====================================================
+let currentWaURL = '';
+
+function openWA() {
+  if (!currentWaURL) return;
+  // Use location.href for same-tab navigation — works in all environments
+  // including claude.ai preview (user sees the Claude external link dialog once,
+  // clicks "Abrir link" and lands directly on WhatsApp Web / app)
+  location.href = currentWaURL;
+}
+
+function closeSuccessModal() { document.getElementById('successModal').classList.remove('active'); }
+
+function showToast(msg, type='success') {
+  const t = document.getElementById('toast');
+  t.textContent = msg; t.className=`toast ${type} show`;
+  setTimeout(()=>t.classList.remove('show'),3500);
+}
+
+// Scroll observer
+const observer = new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.08});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+// Mobile nav
+function toggleMenu(){
+  const nl=document.getElementById('navLinks');
+  const open=nl.style.display==='flex';
+  nl.style.display=open?'none':'flex';
+  if(!open) Object.assign(nl.style,{flexDirection:'column',position:'fixed',top:'68px',left:'0',right:'0',background:'rgba(253,249,245,0.98)',padding:'22px 28px',gap:'16px',boxShadow:'0 10px 40px rgba(0,0,0,0.1)',zIndex:'99'});
+}
+function closeMenu(){document.getElementById('navLinks').style.display='none';}
+
+// Close modals on backdrop
+document.getElementById('successModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closeSuccessModal();});
+document.getElementById('portfolioModal').addEventListener('click',e=>{if(e.target===e.currentTarget)closePortfolioModal();});
+
+// Keyboard nav in modal
+document.addEventListener('keydown',e=>{
+  if(!document.getElementById('portfolioModal').classList.contains('active'))return;
+  if(e.key==='ArrowLeft')changeModalImg(-1);
+  if(e.key==='ArrowRight')changeModalImg(1);
+  if(e.key==='Escape')closePortfolioModal();
+});
+
+// Init
+renderPortfolio('all');
+loadBookings();
+</script>
+</body>
+</html>
